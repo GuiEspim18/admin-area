@@ -1,8 +1,11 @@
-function App() {
+import { Fragment, ReactElement } from "react";
+import Routes from "../routes";
+
+function App(): ReactElement {
   return (
-    <div className="App">
-        
-    </div>
+    <Fragment>
+        <Routes />
+    </Fragment>
   );
 }
 
