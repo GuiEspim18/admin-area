@@ -1,6 +1,6 @@
 import { Button, Card, Container } from "@mui/material";
 import styled, { createGlobalStyle } from "styled-components";
-import { border1, color1, primaryColor, secondaryColor, terciaryColor } from "./main";
+import { border1, color1, error, placeholder, primaryColor, secondaryColor, terciaryColor } from "./main";
 
 export const Global = createGlobalStyle`
     html, body, body>#root {
@@ -41,9 +41,9 @@ export const StyledCard = styled(Card)`
     }
 `;
 
-export const StyledInputContainer = styled.div`
+export const StyledInputContainer: any = styled.div`
     width: 100%;
-    border: solid 1px ${border1};
+    border: solid 1px ${(props: any) => props.invalid === true ? error : border1};
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 15px;
@@ -70,9 +70,9 @@ export const StyledInputContainer = styled.div`
     }
 `;
 
-export const StyledPasswordContainer = styled.div`
+export const StyledPasswordContainer: any = styled.div`
     width: 100%;
-    border: solid 1px ${border1};
+    border: solid 1px ${(props: any) => props.invalid === true ? error : border1};
     border-radius: 4px;
     overflow: hidden;
     display: flex;
@@ -120,4 +120,19 @@ export const StyledButton = styled(Button)`
     background: ${terciaryColor} !important;
     padding: 10px 15px !important;
     min-width: 150px !important;
+`;
+
+export const StyledInput: any =  styled("input")`
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: ${(props: any) => props.invalid === true ? error : placeholder};
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: ${(props: any) => props.invalid === true ? error : placeholder};;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: ${(props: any) => props.invalid === true ? error : placeholder};;
+}
 `;

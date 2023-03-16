@@ -5,4 +5,5 @@ export interface IInput {
     label: string;
     value: string;
     setValue: Dispatch<string>;
+    invalid?: boolean;
 }

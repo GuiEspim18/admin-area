@@ -1,8 +1,9 @@
-import { ReactElement, useContext } from "react";
+import { ReactElement, useContext, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { ButtonDiv, H2, StyledButton, StyledCard, StyledContainer } from "../../../assets/ui/global";
 import { LoginContext } from "../../shared/common/context/Login.context";
 import { ILoginContext } from "../../shared/interfaces/login-context/login-context";
+import { Error } from "../../shared/utils/Alerts/Alerts";
 import Input from "../../shared/utils/Input/Input";
 import PasswordInput from "../../shared/utils/PasswordInput/PasswordInput";
 
@@ -14,13 +15,32 @@ function Login(): ReactElement {
 
     const navigate: NavigateFunction = useNavigate();
 
+    const [ invEmail, setInvEmail ] = useState(false);
+
+    const [ invPassword, setInvPassword ] = useState(false);
+
 
     /* Submit form */
 
-    const submit: VoidFunction = (): void => {
+    function submit(event: Event): void {
+        event.preventDefault()
         if (email.length > 0 && password.length > 0) {
-          navigate('/home');
+            if (isEmailValid(email)) {
+                navigate('/home');
+            } else {
+                setInvEmail(true) 
+                Error("Digite um email válido!");
+            }
+        } else {
+            setInvEmail(true)
+            setInvPassword(true)
+            Error("Preencha todos os campos obrigatórios!");
         }
+    }
+
+
+    function isEmailValid(email:string) {
+        return /\S+@\S+\.\S+/.test(email);
     }
 
 
@@ -29,12 +49,12 @@ function Login(): ReactElement {
     return (
         <StyledContainer>
             <StyledCard>
-                <form>
+                <form onSubmit={(event: any) => submit(event)}>
                     <H2>Login</H2>
-                    <Input label="Email" type="email" value={email} setValue={(value) => setEmail(value)} />
-                    <PasswordInput label="Password" password={password} setPassword={(value) => setPassword(value)} />
-                    <ButtonDiv onClick={submit}>
-                        <StyledButton variant="contained">Submit</StyledButton>
+                    <Input label="Email" type="text" value={email} invalid={invEmail} setValue={(value) => setEmail(value)} />
+                    <PasswordInput label="Password" password={password} invalid={invPassword} setPassword={(value) => setPassword(value)} />
+                    <ButtonDiv>
+                        <StyledButton variant="contained" type="submit">Submit</StyledButton>
                     </ButtonDiv>
                 </form>
             </StyledCard>

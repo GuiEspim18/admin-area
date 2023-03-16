@@ -1,12 +1,13 @@
 import { ReactElement } from "react";
-import { StyledInputContainer } from "../../../../assets/ui/global";
+import { StyledInput, StyledInputContainer } from "../../../../assets/ui/global";
 import { IInput } from "../../interfaces/input/input.interface";
 
-function Input({type, label, value, setValue}: IInput): ReactElement {
+
+function Input({type, label, value, setValue, invalid}: IInput): ReactElement {
 
     /* Setting email hook */
 
-    const settingEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    function settingEmail(event: React.ChangeEvent<HTMLInputElement>): void {
         setValue(event.target.value);
     }
 
@@ -14,8 +15,8 @@ function Input({type, label, value, setValue}: IInput): ReactElement {
     /* Return component */
 
     return (
-        <StyledInputContainer>
-            <input type={type} placeholder={label} value={value} onChange={(event) => settingEmail(event)} />
+        <StyledInputContainer invalid={invalid}>
+            <StyledInput invalid={invalid} type={type} placeholder={label} value={value} onChange={(event: any) => settingEmail(event)} />
         </StyledInputContainer>
     );
     

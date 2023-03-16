@@ -1,11 +1,11 @@
 import { IconButton } from "@mui/material";
-import { ReactElement, useState } from "react";
-import { StyledPasswordContainer } from "../../../../assets/ui/global";
+import {ReactElement, useState } from "react";
+import { StyledInput, StyledPasswordContainer } from "../../../../assets/ui/global";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { IPasswordInput } from "../../interfaces/password-input/password-input.interface";
 
-function PasswordInput({ label, password, setPassword }: IPasswordInput): ReactElement {
+function PasswordInput({ label, password, setPassword, invalid }: IPasswordInput): ReactElement {
 
     /* Vars */
 
@@ -25,7 +25,7 @@ function PasswordInput({ label, password, setPassword }: IPasswordInput): ReactE
 
     /* Setting email hook */
 
-    const settingPassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    function settingPassword(event: React.ChangeEvent<HTMLInputElement>): void {
         setPassword(event.target.value);
     }
 
@@ -33,8 +33,8 @@ function PasswordInput({ label, password, setPassword }: IPasswordInput): ReactE
     /* Return component */
 
     return (
-        <StyledPasswordContainer>
-            <input type={view === false ? "password":"text"} placeholder={label} value={password} onChange={(event) => settingPassword(event)} />
+        <StyledPasswordContainer invalid={invalid}>
+            <StyledInput invalid={invalid} type={view === false ? "password":"text"} placeholder={label} value={password} onChange={(event: any) => settingPassword(event)} />
             <IconButton aria-label="view" onClick={changeView}>
                 {(view === false) && <RemoveRedEyeIcon />}
                 {(view === true) && <VisibilityOffIcon />}
