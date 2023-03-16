@@ -1,14 +1,20 @@
+import Home from "../../../../pages/Home/Home";
 import Login from "../../../../pages/Login/Login";
+import { LoginProvider } from "../../../common/context/Login.context";
 
 export const routes: Array<any> = [
     {
         path: "/login",
-        component: <Login />,
+        component: (
+            <LoginProvider>
+                <Login />
+            </LoginProvider>
+        ),
         redirect: true
     },
     {
         path: "/home",
-        component: <Login />,
+        component: <Home />,
         redirect: false
     },
 ]

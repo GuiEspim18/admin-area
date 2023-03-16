@@ -60,6 +60,14 @@ export const StyledInputContainer = styled.div`
         border-radius: 4px;
         background: transparent;
     }
+
+    &:hover {
+        border-color: ${terciaryColor};
+    }
+
+    &:focus-within {
+        border-color: ${terciaryColor};
+    }
 `;
 
 export const StyledPasswordContainer = styled.div`
@@ -69,6 +77,8 @@ export const StyledPasswordContainer = styled.div`
     overflow: hidden;
     display: flex;
     margin-bottom: 15px;
+    box-sizing: border-box;
+    transition: 0.3s;
 
     input {
         height: 100%;
@@ -81,7 +91,17 @@ export const StyledPasswordContainer = styled.div`
         color: ${color1};
         border-radius: 4px;
         background: transparent;
+
     }
+
+    &:hover {
+        border-color: ${terciaryColor};
+    }
+
+    &:focus-within {
+        border-color: ${terciaryColor};
+    }
+
 `;
 
 export const H2 = styled.h2`
@@ -99,4 +119,5 @@ export const ButtonDiv = styled.div`
 export const StyledButton = styled(Button)`
     background: ${terciaryColor} !important;
     padding: 10px 15px !important;
+    min-width: 150px !important;
 `;
