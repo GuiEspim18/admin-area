@@ -1,6 +1,6 @@
-import { Container } from "@mui/system";
+import { Button, Card, Container } from "@mui/material";
 import styled, { createGlobalStyle } from "styled-components";
-import { primaryColor } from "../main";
+import { border1, color1, primaryColor, secondaryColor, terciaryColor } from "./main";
 
 export const Global = createGlobalStyle`
     html, body, body>#root {
@@ -24,7 +24,79 @@ export const Global = createGlobalStyle`
 `;
 
 export const StyledContainer = styled(Container)`
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100%;
+`;
+
+export const StyledCard = styled(Card)`
+    padding: 14px 34px 34px 34px;
+    width: 40%;
+    background: ${secondaryColor} !important;
+    border-radius: 10px !important;
+
+    @media screen and (max-width: 700px) {
+        width: 90%;
+    }
+`;
+
+export const StyledInputContainer = styled.div`
+    width: 100%;
+    border: solid 1px ${border1};
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+
+    input {
+        height: 100%;
+        margin: 0;
+        padding: 15px 20px;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        color: ${color1};
+        border-radius: 4px;
+        background: transparent;
+    }
+`;
+
+export const StyledPasswordContainer = styled.div`
+    width: 100%;
+    border: solid 1px ${border1};
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    margin-bottom: 15px;
+
+    input {
+        height: 100%;
+        margin: 0;
+        padding: 15px 20px;
+        flex: 1;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        color: ${color1};
+        border-radius: 4px;
+        background: transparent;
+    }
+`;
+
+export const H2 = styled.h2`
+    color: ${color1};
+    font-size: 2rem;
+    text-align: center;
+`;
+
+export const ButtonDiv = styled.div`
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+`;
+
+export const StyledButton = styled(Button)`
+    background: ${terciaryColor} !important;
+    padding: 10px 15px !important;
 `;
