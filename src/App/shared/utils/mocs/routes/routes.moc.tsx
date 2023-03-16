@@ -17,4 +17,4 @@ export const routes: Array<any> = [
         component: <Home />,
         redirect: false
     },
-]
+];

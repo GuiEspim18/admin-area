@@ -9,7 +9,7 @@ function PasswordInput({ label, password, setPassword }: IPasswordInput): ReactE
 
     /* Vars */
 
-    const [view, setView] = useState<boolean>(false)
+    const [view, setView] = useState<boolean>(false);
 
 
     /* Changing view */
